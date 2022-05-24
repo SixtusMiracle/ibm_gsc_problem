@@ -1,41 +1,62 @@
 class GSCConverter {
   // initialize variables
   List<int> decimalCounterParts = [0, 1, -1];
-  int? previousQuotient, currentQuotient, remainder;
-  String? currentAnswer, finalAnswer;
+  int previousQuotient = 0, currentQuotient = 0, remainder = 0;
+  String currentAnswer = '', finalAnswer = '';
+  List<String> convertedListOfNumbers = [];
 
-  void convertToGSCFromDecimal({required List listOfNumbers}) {
-    for (var decimalNumber in listOfNumbers) {
+  List<String> convertToGSCFromDecimal({required List<int> listOfNumbers}) {
+    for (int decimalNumber in listOfNumbers) {
       previousQuotient = decimalNumber;
       while (previousQuotient != 0) {
-        setCurrentQuotientAndRemainder(decimalNumber: decimalNumber);
-        if (remainder! > 1) {
+        setCurrentQuotientAndRemainder();
+        if (remainder > 1) {
           decimalTestLoop:
-          for (var i = decimalCounterParts.length - 1; i >= 0; i--) {
+          for (var i = 2; i >= 0; i--) {
             var solvedQuotient =
-                (previousQuotient! - decimalCounterParts[i]) / 3;
-            if (int.tryParse(solvedQuotient.toString()) != null) {
-              previousQuotient = solvedQuotient as int;
-              //TODO: concatenate 'decimalCounterParts[i]' to the front of currentAnswer string
+                (previousQuotient - decimalCounterParts[i]) / 3;
+            if (isWholeNumber(value: solvedQuotient)) {
+              previousQuotient = solvedQuotient.round();
+              buildAnswer(answer: decimalCounterParts[i].toString());
               break decimalTestLoop;
             }
           }
         } else {
           previousQuotient = currentQuotient;
-          //TODO: concatenate 'remainder to the front of currentAnswer string
+          buildAnswer(answer: remainder.toString());
         }
       }
-      //TODO: concatenate '[decimalNumber] = ' to the front of currentAnswer string
+      buildAnswer(decimalNumber: decimalNumber);
     }
+
+    return convertedListOfNumbers;
   }
 
-  setCurrentQuotientAndRemainder({required int decimalNumber}) {
-    if (previousQuotient! >= 3) {
-      currentQuotient = decimalNumber ~/ 3;
-      remainder = decimalNumber % 3;
+  void setCurrentQuotientAndRemainder() {
+    if (previousQuotient >= 3) {
+      currentQuotient = previousQuotient ~/ 3;
+      remainder = previousQuotient % 3;
     } else {
       remainder = previousQuotient;
       currentQuotient = 0;
     }
   }
+
+  void buildAnswer({String? answer, int? decimalNumber}) {
+    if (decimalNumber != null) {
+      finalAnswer = '$decimalNumber = $currentAnswer GSC';
+      convertedListOfNumbers.add(finalAnswer);
+
+      // reset necessary variables
+      currentAnswer = '';
+      previousQuotient = 0;
+      currentQuotient = 0;
+      remainder = 0;
+    } else {
+      currentAnswer =
+          answer == '-1' ? '-$currentAnswer' : '$answer$currentAnswer';
+    }
+  }
+
+  bool isWholeNumber({required var value}) => (value % 1) == 0;
 }
