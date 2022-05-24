@@ -17,11 +17,11 @@ You have to write a program that can convert 32-bit signed decimal integers into
 
 #### Sample Input
 Your program will receive a list of integers as input, for example:<br>
-10<br> -17<br> 42<br> 1024<br>
+10<br> 2<br> -17<br> 42<br> 1024<br>
 
 #### Sample Input
 You have to echo the input numbers, followed by their GSC representations include all extra symbols, as shown below):<br>
- 10 = 101 GSC <br> 2 = 1- GSC <br> -17 =  -1-0- GSC <br> 42 - 1---0 GSC<br> 1024 = 111-0-1 GSC<br>
+ 10 = 101 GSC <br> 2 = 1- GSC <br> -17 =  -1-0- GSC <br> 42 = 1---0 GSC<br> 1024 = 111-0-1 GSC<br>
 
 ## Donate
 You can support me via [PayPal](https://paypal.me/mirolicmiralo)

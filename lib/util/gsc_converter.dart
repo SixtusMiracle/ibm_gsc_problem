@@ -7,7 +7,8 @@ class GSCConverter {
 
   List<String> convertToGSCFromDecimal({required List<int> listOfNumbers}) {
     for (int decimalNumber in listOfNumbers) {
-      previousQuotient = decimalNumber;
+      previousQuotient =
+          decimalNumber.isNegative ? decimalNumber.abs() : decimalNumber;
       while (previousQuotient != 0) {
         setCurrentQuotientAndRemainder();
         if (remainder > 1) {
@@ -44,7 +45,9 @@ class GSCConverter {
 
   void buildAnswer({String? answer, int? decimalNumber}) {
     if (decimalNumber != null) {
-      finalAnswer = '$decimalNumber = $currentAnswer GSC';
+      finalAnswer = decimalNumber.isNegative
+          ? '$decimalNumber = -$currentAnswer GSC'
+          : '$decimalNumber = $currentAnswer GSC';
       convertedListOfNumbers.add(finalAnswer);
 
       // reset necessary variables
