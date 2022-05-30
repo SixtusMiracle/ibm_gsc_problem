@@ -1,8 +1,6 @@
 [![License](https://img.shields.io/github/license/sixtusmiracle/ibm_gsc_problem)](LICENSE)
 ![GitHub repo size in bytes](https://img.shields.io/github/repo-size/sixtusmiracle/ibm_gsc_problem)
 
-<!-- TODO: ![Screenshot](https://raw.githubusercontent.com/sixtusmiracle/mirablog/main/screenshot.png) -->
-
 <h3 style="text-align:center;margin-bottom:1em;">Fourth Southern African Regional ACM Collegiate Programming Competition</h3>
 <h4 style="text-align:center;margin-bottom:1em;">Sponsored by IBM</h4>
 <h5 style="text-align:center;">Problem 1 - Pink balloon</h5>
@@ -24,6 +22,6 @@ You have to echo the input numbers, followed by their GSC representations includ
  10 = 101 GSC <br> 2 = 1- GSC <br> -17 =  -1-0- GSC <br> 42 = 1---0 GSC<br> 1024 = 111-0-1 GSC<br>
 
 ## Donate
-You can support me via [PayPal](https://paypal.me/mirolicmiralo)
+You can support me via [Barter](https://barter.me/sixtusagbo)
 
 ### &copy; Copyright 2022 Miralo
